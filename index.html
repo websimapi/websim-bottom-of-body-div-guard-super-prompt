@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bottom-of-Body DIV Guard + Super Prompt</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ...existing content... -->
+  <main class="wrap">
+    <section class="card">
+      <h1>Bottom-of-Body DIV Guard</h1>
+      <p class="lede">
+        Minimal JS that continuously hides or removes any DIV auto-appended as the last element of the body, unless it’s on the allowed list.
+      </p>
+
+      <div class="explain">
+        <ul>
+          <li>Targets only the bottom DIV (document.body.lastElementChild).</li>
+          <li>On load: immediately checks and hides/removes unexpected DIVs.</li>
+          <li>Continuous: MutationObserver + 1s interval sweep for resilience.</li>
+          <li>Default action: display:none !important; visibility:hidden !important; pointer-events:none !important.</li>
+          <li>If data-remove="true": remove() instead of hide.</li>
+          <li>Allowed IDs: editor-container, grid-container (editable list in code).</li>
+          <li>Waits for DOMContentLoaded if body isn’t ready; fails silently.</li>
+          <li>Disconnects on pagehide/beforeunload; survives re-appends and iframes.</li>
+          <li>Plain JS; no UI, no logs.</li>
+        </ul>
+      </div>
+
+      <div class="actions">
+        <button id="copy-btn" class="btn">Copy Super Prompt</button>
+        <span id="copy-status" class="status" aria-live="polite"></span>
+      </div>
+
+      <label class="code-label" for="super-prompt">Super Prompt</label>
+      <textarea id="super-prompt" class="code" rows="16" spellcheck="false"></textarea>
+    </section>
+  </main>
+  <!-- ...existing content... -->
+
+  <script src="guard.js"></script>
+  <script src="app.js" type="module"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
+
